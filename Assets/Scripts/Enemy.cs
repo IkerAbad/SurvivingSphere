@@ -19,6 +19,11 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         Vector3 lookDirection = (player.transform.position - transform.position).normalized;
-        enemyRigidbody.AddForce(lookDirection * speed);
+        enemyRigidbody.AddForce(lookDirection * speed * Time.deltaTime);
+
+        if(transform.position.y < -10)
+        {
+            Destroy(gameObject);
+        }
     }
 }
